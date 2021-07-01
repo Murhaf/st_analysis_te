@@ -1,0 +1,27 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+black = "==19.10b0"
+pylint = "~=2.4"
+mypy = "*"
+isort = "*"
+pre-commit = "*"
+
+[packages]
+pandas = "*"
+scipy = "*"
+numpy = "*"
+scikit-learn = "*"
+hdbscan = "*"
+streamlit = "*"
+altair = "*"
+plotly = "*"
+pydantic = "*"
+wordcloud = "*"
+
+
+[requires]
+python_version = "3.7"
