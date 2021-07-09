@@ -5,6 +5,8 @@ from pandas.core.series import Series
 from sklearn.feature_extraction.text import CountVectorizer
 from wordcloud import WordCloud
 
+from stopwords import STOP_WORDS_NORWEGIAN
+
 
 @st.cache(allow_output_mutation=True)
 def read_data(file_path):
@@ -35,7 +37,10 @@ def get_wordcloud(data, n, word_cloud=False):
     cv.fit_transform(data['sentences'].to_list())
 
     if word_cloud:
-        wc = WordCloud(background_color="white").fit_words(cv.vocabulary_)
+        wc = WordCloud(
+            background_color="white",
+            stopwords=STOP_WORDS_NORWEGIAN,
+        ).fit_words(cv.vocabulary_)
         st.image(wc.to_array())
     with st.beta_expander(f'Show top {n} words'):
         sorted_top_words = dict(
