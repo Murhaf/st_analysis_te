@@ -37,9 +37,10 @@ def get_wordcloud(data, n, word_cloud=False):
     cv.fit_transform(data['sentences'].to_list())
 
     if word_cloud:
+        stopwords = set(STOP_WORDS_NORWEGIAN)
         wc = WordCloud(
             background_color="white",
-            stopwords=STOP_WORDS_NORWEGIAN,
+            stopwords=stopwords,
         ).fit_words(cv.vocabulary_)
         st.image(wc.to_array())
     with st.beta_expander(f'Show top {n} words'):
