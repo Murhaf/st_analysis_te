@@ -33,15 +33,11 @@ def plot_kp(data):
 
 
 def get_wordcloud(data, n, word_cloud=False):
-    cv = CountVectorizer(max_df=0.7, max_features=n)
+    cv = CountVectorizer(max_df=0.7, max_features=n, stop_words=STOP_WORDS_NORWEGIAN)
     cv.fit_transform(data['sentences'].to_list())
 
     if word_cloud:
-        stopwords = set(STOP_WORDS_NORWEGIAN)
-        wc = WordCloud(
-            background_color="white",
-            stopwords=stopwords,
-        ).fit_words(cv.vocabulary_)
+        wc = WordCloud(background_color="white").fit_words(cv.vocabulary_)
         st.image(wc.to_array())
     with st.beta_expander(f'Show top {n} words'):
         sorted_top_words = dict(
