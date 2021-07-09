@@ -33,7 +33,7 @@ def plot_kp(data):
 
 
 def get_wordcloud(data, n, word_cloud=False):
-    cv = CountVectorizer(max_df=0.7, max_features=n, stop_words=STOP_WORDS_NORWEGIAN)
+    cv = CountVectorizer(max_df=0.7, max_features=n, stop_words=STOP_WORDS_NORWEGIAN, width=800, height=400)
     cv.fit_transform(data['sentences'].to_list())
 
     if word_cloud:
